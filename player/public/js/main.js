@@ -16,6 +16,7 @@ window.isbrowserpreview = getUrlParameter("webview")
 window.isCoreplugin = undefined
 window.Renderer = undefined
 window.isMobile = undefined
+ //window.isMobile = true
 
 document.body.addEventListener("logError", telemetryError, false)
 
@@ -306,9 +307,12 @@ function setGlobalConfig (configuration) {
 		configuration.context.pdata.pid = configuration.context.pdata.pid + "." + AppConfig.pdata.pid
 	}
 	GlobalContext.config = mergeJSON(AppConfig, configuration)
+	console.log('setGlobalConfig');
+	console.log('AppConfig', AppConfig);
+	console.log('configuration', configuration);
 	window.globalConfig = GlobalContext.config
 
-	if (_.isUndefined(window.cordova)) {
+	if (!window.isMobile) {
 		org.ekstep.service.renderer.api.setBaseUrl(window.globalConfig.host + window.globalConfig.apislug)
 	}
 	setTelemetryEventFields(window.globalConfig)

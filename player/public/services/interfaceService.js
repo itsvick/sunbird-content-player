@@ -211,6 +211,7 @@ org.ekstep.service.content = new (org.ekstep.service.mainService.extend({
 		return new Promise(function (resolve, reject) {
 			org.ekstep.service.renderer.getAllUserProfile(obj)
 				.then(function (data) {
+					console.log("data ==========>", data);
 					resolve(data)
 				})
 				.catch(function (err) {

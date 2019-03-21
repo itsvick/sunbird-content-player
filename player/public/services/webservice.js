@@ -56,7 +56,7 @@ org.ekstep.service.web = new (org.ekstep.service.mainService.extend({
 	setUser: function (uid) {
 		return new Promise(function (resolve, reject) {
 			resolve(true)
-		})
+		})	
 	},
 
 	getMetaData: function () {
@@ -97,6 +97,8 @@ org.ekstep.service.web = new (org.ekstep.service.mainService.extend({
 		})
 	},
 	getContentMetadata: function (id, headersParam) {
+		console.log("getContentMetadata ===>  id", id);
+		console.log("getContentMetadata ===>  headersParam", headersParam);	
 		var instance = this
 		return new Promise(function (resolve, reject) {
 			instance.callApi(org.ekstep.service.web.api.getAPI() + id, "GET", headersParam, undefined, function (resp) {

@@ -35,13 +35,14 @@ org.ekstep.contentrenderer.loadDefaultPlugins = function (cb) {
  * default and external plugin and then initializes the player "renderer:player:init"
  * @param  {obj} appInfo [metadata]
  */
-org.ekstep.contentrenderer.startGame = function (appInfo) {
-	globalConfig.basepath = (appInfo.streamingUrl) ? (appInfo.streamingUrl) : (globalConfig.basepath || appInfo.baseDir)
-	org.ekstep.contentrenderer.loadDefaultPlugins(function () {
-		org.ekstep.contentrenderer.loadExternalPlugins(function () {
-			var globalConfig = EkstepRendererAPI.getGlobalConfig()
-			if (globalConfig.mimetypes.indexOf(appInfo.mimeType) > -1) {
-				/**
+org.ekstep.contentrenderer.startGame = function(appInfo) {
+    console.log("appInfo ===> ", appInfo);
+        globalConfig.basepath = (appInfo.streamingUrl) ? (appInfo.streamingUrl) : (globalConfig.basepath || appInfo.baseDir);
+        org.ekstep.contentrenderer.loadDefaultPlugins(function() {
+            org.ekstep.contentrenderer.loadExternalPlugins(function() {
+                var globalConfig = EkstepRendererAPI.getGlobalConfig()
+                if (globalConfig.mimetypes.indexOf(appInfo.mimeType) > -1) {
+                    /**
                      * renderer:player:init event will get dispatch after loading default & external injected plugins
                      * @event 'renderer:player:init'
                      * @fires 'renderer:player:init'
@@ -100,10 +101,15 @@ org.ekstep.contentrenderer.loadExternalPlugins = function (cb) {
 }
 
 org.ekstep.contentrenderer.setContent = function (metadata, data, configuration) {
+
+	console.log("setContent======>", metadata);
+	console.log("setContent======>", data);
+	console.log("setContent======>", configuration);
+	
 	if (_.isUndefined(metadata) || _.isNull(metadata)) {
 		content.metadata = AppConfig.defaultMetadata
 	} else {
-		content.metadata = metadata
+		content.metadata = metadata	
 	}
 	if (!_.isUndefined(data)) {
 		content.body = data
@@ -126,12 +132,15 @@ org.ekstep.contentrenderer.setContent = function (metadata, data, configuration)
 
 org.ekstep.contentrenderer.initializePreview = function (configuration) {
 	// Checking if renderer is running or not
+	console.log("configuration =====>", configuration);
 	if (EkstepRendererAPI.isRendererRunning()) {
 		// If renderer is running just call function to load aluncher
 		var contentObj = configuration.metadata || globalConfig.defaultMetadata
 		if (configuration.data) contentObj.body = configuration.data
+		console.log("isRunning =====>", contentObj);
 		EkstepRendererAPI.renderContent(contentObj)
 	} else {
+		
 		// If renderer is not running launch the framework from start
 		if (configuration) { // Deep clone of configuration. To avoid object refrence issue.
 			var configurationObj = JSON.parse(JSON.stringify(configuration))
@@ -274,7 +283,7 @@ org.ekstep.contentrenderer.setContentMetadata = function (contentData, cb) {
 		data = data.localData
 	}
 	if (typeof cordova === "undefined") {
-		org.ekstep.contentrenderer.getContentBody(content.metadata.identifier)
+		 org.ekstep.contentrenderer.getContentBody(content.metadata.identifier)
 	}
 	if (cb) cb()
 }
@@ -330,8 +339,10 @@ org.ekstep.contentrenderer.web = function (id) {
 }
 
 org.ekstep.contentrenderer.device = function () {
+	console.log('In org.ekstep.contentrenderer.device');
 	var globalconfig = EkstepRendererAPI.getGlobalConfig()
 	if (isMobile) {
+		console.log('globalconfig', globalconfig)
 		if (globalconfig.metadata) {
 			org.ekstep.contentrenderer.setContentMetadata(globalconfig.metadata, function () {
 				org.ekstep.contentrenderer.startGame(content.metadata)

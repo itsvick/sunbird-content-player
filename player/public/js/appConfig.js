@@ -7,7 +7,7 @@ AppConfig = {
 	recorder: "AUDIO_RECORDER",
 	flavor: "DEPLOYMENT",
 	heartBeatTime: 180000,
-	isCorePluginsPackaged: true, // Default to TRUE, For local development turn off this flag.
+	isCorePluginsPackaged: false, // Default to TRUE, For local development turn off this flag.
 	s3ContentHost: "/assets/public/content/",
 	previewPluginspath: "/content-plugins",
 	devicePluginspath: "/widgets/content-plugins",
@@ -95,13 +95,18 @@ AppConfig = {
 		ver: 1.0,
 		type: "plugin"
 	}, {
-		id: "org.ekstep.userswitcher",
+		id: "org.sunbird.player.userswitcher",
 		ver: 1.0,
+		type: "plugin"
+	},
+	{
+		id: "org.sunbird.player.endpage",
+		ver: 1.1,
 		type: "plugin"
 	}],
 	overlay: {
-		enableUserSwitcher: true,
-		showUser: true,
+		enableUserSwitcher: false,
+		showUser: false,
 		showOverlay: true,
 		showNext: true,
 		showPrevious: true,
@@ -118,7 +123,7 @@ AppConfig = {
 		bgImage: "assets/icons/background_1.png",
 		webLink: "https://www.ekstep.in"
 	},
-	showEndPage: true,
+	showEndPage: false,
 	env: "contentplayer",
 	pdata: { "id": "in.ekstep", "ver": "1.0", "pid": "contentplayer" },
 	channel: "in.ekstep",

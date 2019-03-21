@@ -11,7 +11,75 @@
     },
     "responseCode": "OK",
     "result": {
-        "content": [
+        "content": [{
+            "identifier": "org.ekstep.vivek",
+            "mimeType": "application/vnd.ekstep.ecml-archive",
+            "contentData": {
+                "hierarchyInfo": [
+                    {
+                      "contentType": "textbook",
+                      "identifier": "do_2125251490189148161635"
+                    },
+                    {
+                      "contentType": "textbookunit",
+                      "identifier": "do_2125251493823201281636"
+                    }
+                  ],
+                "questionnaire": null,
+                "appIcon": "fixture-stories/custom_eval/logo.png",
+                "subject": "literacy_v2",
+                "description": "epub - Beyond Good and Evil",
+                "name": "Vivek",
+                "owner": "Vivek Kasture",
+                "downloadUrl": "",
+                "checksum": null,
+                "loadingMessage": "Without requirements or design, programming is the art of adding bugs to an empty text file. ...",
+                "concepts": [{
+                    "identifier": "LO1",
+                    "name": "Receptive Vocabulary",
+                    "objectType": "Concept"
+                }],
+                "identifier": "org.ekstep.vivek",
+                "grayScaleAppIcon": null,
+                "pkgVersion": 1
+            },
+            "isAvailable": true,
+            "path": "fixture-stories/question-set2"
+        },            {
+            "identifier": "org.ekstep.vivek",
+            "mimeType": "application/vnd.ekstep.ecml-archive",
+            "contentData": {
+                "hierarchyInfo": [
+                    {
+                      "contentType": "textbook",
+                      "identifier": "do_2125251490189148161635"
+                    },
+                    {
+                      "contentType": "textbookunit",
+                      "identifier": "do_2125251493823201281636"
+                    }
+                  ],
+                "questionnaire": null,
+                "appIcon": "fixture-stories/custom_eval/logo.png",
+                "subject": "literacy_v2",
+                "description": "epub - Beyond Good and Evil",
+                "name": "Test loader",
+                "owner": "Vinu Kumar V S",
+                "downloadUrl": "",
+                "checksum": null,
+                "loadingMessage": "Without requirements or design, programming is the art of adding bugs to an empty text file. ...",
+                "concepts": [{
+                    "identifier": "LO1",
+                    "name": "Receptive Vocabulary",
+                    "objectType": "Concept"
+                }],
+                "identifier": "org.ekstep.vivek",
+                "grayScaleAppIcon": null,
+                "pkgVersion": 1
+            },
+            "isAvailable": true,
+            "path": "fixture-stories/loader-test"
+        },
             {
                 "identifier": "org.ekstep.customeval",
                 "mimeType": "application/vnd.ekstep.ecml-archive",

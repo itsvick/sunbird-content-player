@@ -17,8 +17,11 @@ org.ekstep.service.mainService = Class.extend({
 	initialize: function () {}
 })
 org.ekstep.service.init = function () {
-	if (typeof cordova !== "undefined") {
-		org.ekstep.service.renderer = genieservice
+	console.log("org.ekstep.service.init");
+	if (!isbrowserpreview) { // TODO: remove this check and add to check isMobile
+		org.ekstep.service.renderer = genieservice;
+		 window.isMobile = true;
+		console.log("org.ekstep.service.init set to genieservice", telemetry);
 	}
 }
 // eslint-disable-next-line
@@ -35,4 +38,6 @@ telemetry_web = {
 	}
 }
 // eslint-disable-next-line
-if (typeof cordova === "undefined") telemetry = telemetry_web
+// if (typeof cordova === "undefined") telemetry = telemetry_web
+console.log("telemetry ====>", window);
+if (isbrowserpreview) telemetry = telemetry_web

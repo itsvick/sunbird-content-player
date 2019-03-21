@@ -1,4 +1,4 @@
-/** 
+/**
  * @author Manjunath Davanam<manjunathd@ilimi.in>
  * @description    - Which minifies the content-player script files and style files.
  * @example        - CMD to run this file for ekstep channel  👉 [npm run build ekstep]
@@ -6,8 +6,8 @@
  */
 
 
-const BUILD_NUMBER = process.env.build_number;
-const PLAYER_VER = process.env.player_version_number;
+const BUILD_NUMBER = process.env.build_number || 1;
+const PLAYER_VER = process.env.player_version_number || 1;
 const FILTER_PLUGINS = process.env.filter_plugins || 'false'; // To seperate the plugins for ekstep and sunbird.
 
 // Required dependency files
@@ -77,7 +77,7 @@ const APP_SCRIPTS = [
     './public/js/basePlugin.js',
     './public/services/mainservice.js',
     //'./public/services/localservice.js', // For localdevelopment use localservice.js insted of webservice.js
-    './public/services/webservice.js',
+    // './public/services/webservice.js',
     './public/services/interfaceService.js',
     './public/js/ekstepRendererApi.js',
     './public/js/content-renderer.js',
@@ -87,8 +87,8 @@ const APP_SCRIPTS = [
     './public/js/ekstepRendererEvents.js',
     './public/js/iEvaluator.js',
     './public/dispatcher/idispatcher.js',
-    './public/dispatcher/web-dispatcher.js',
-    './public/dispatcher/device-dispatcher.js',
+    // './public/dispatcher/web-dispatcher.js',
+     './public/dispatcher/device-dispatcher.js',
     '../js-libs/renderer/manager/AudioManager.js',
 ];
 const TELEMETRY = [
@@ -309,7 +309,7 @@ function copyCorePlugins(channel) {
 };
 
 function replaceStringInFiles(channel) {
-    // Which is used to replace the specific string from the mentioned file 
+    // Which is used to replace the specific string from the mentioned file
     var replaceTo = (channel === CONSTANTS.sunbird) ? APP_CONFIG.sunbird.splashScreen.backgroundImage : APP_CONFIG.ekstep.splashScreen.backgroundImage
     const options = [{
         src: "./config.xml",
