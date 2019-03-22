@@ -160,7 +160,8 @@ org.ekstep.contentrenderer.initializePreview = function (configuration) {
 		setGlobalConfig(configurationObj)
 		GlobalContext.game = { id: configurationObj.contentId || GlobalContext.game.id, ver: (configurationObj.metadata && configurationObj.metadata.pkgVersion) || "1.0" }
 		GlobalContext.game.ver = GlobalContext.game.ver.toString()
-		GlobalContext.user = { uid: configurationObj.uid }
+		// GlobalContext.user = { uid: configurationObj.uid }
+		GlobalContext.user = { uid: configurationObj.context.actor.id } // Need to refactor
 
 		addWindowUnloadEvent()
 		/**
