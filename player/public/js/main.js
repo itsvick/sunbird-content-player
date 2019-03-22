@@ -291,7 +291,11 @@ function setGlobalConfig (configuration) {
 	if (typeof configuration.metadata === "string") {
 		configuration.metadata = JSON.parse(configuration.metadata)
 	}
+
+	console.log('configuration', configuration);
+	
 	if (configuration.metadata && configuration.metadata.contentData) {
+		console.log('configuration 2', configuration);
 		// Mobile specific temporary fix release-1.9.0
 		var metadata = configuration.metadata.contentData
 		_.extend(metadata, _.pick(configuration.metadata, "hierarchyInfo", "isAvailableLocally", "basePath", "rollup"))
@@ -312,7 +316,7 @@ function setGlobalConfig (configuration) {
 	console.log('configuration', configuration);
 	window.globalConfig = GlobalContext.config
 
-	if (!window.isMobile) {
+	if (isbrowserpreview) {
 		org.ekstep.service.renderer.api.setBaseUrl(window.globalConfig.host + window.globalConfig.apislug)
 	}
 	setTelemetryEventFields(window.globalConfig)

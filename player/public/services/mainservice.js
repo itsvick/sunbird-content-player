@@ -20,7 +20,7 @@ org.ekstep.service.init = function () {
 	console.log("org.ekstep.service.init");
 	if (!isbrowserpreview) { // TODO: remove this check and add to check isMobile
 		org.ekstep.service.renderer = genieservice;
-		 window.isMobile = true;
+		// window.isMobile = true;
 		console.log("org.ekstep.service.init set to genieservice", telemetry);
 	}
 }

@@ -5,6 +5,7 @@ org.ekstep.service.content = new (org.ekstep.service.mainService.extend({
 	},
 	init: function () {},
 	getContentList: function (filter, childrenIds) {
+		console.log("getContentList called", id);
 		return new Promise(function (resolve, reject) {
 			org.ekstep.service.content._filterContentList(filter, childrenIds)
 				.then(function (result) {
@@ -17,6 +18,7 @@ org.ekstep.service.content = new (org.ekstep.service.mainService.extend({
 		})
 	},
 	getContent: function (id) {
+		console.log("getContent called", id);
 		return new Promise(function (resolve, reject) {
 			org.ekstep.service.renderer.getContent(id)
 				.then(function (resp) {
@@ -40,6 +42,7 @@ org.ekstep.service.content = new (org.ekstep.service.mainService.extend({
 		})
 	},
 	getContentAvailability: function (id) {
+		console.log("getContentAvailability called", id);		
 		return new Promise(function (resolve, reject) {
 			org.ekstep.service.renderer.getContent(id)
 				.then(function (contentData) {

@@ -2,8 +2,9 @@ org.ekstep.contentrenderer.deviceDispatcher = new (org.ekstep.contentrenderer.ID
 	type: "deviceDispatcher",
 	initDispatcher: function () {},
 	dispatch: function (event) {
-		// EventBus.dispatch("telemetryEvent", event)
+		EventBus.dispatch("telemetryEvent", event)
 		var eventStr = (typeof event === "string") ? event : JSON.stringify(event)
 		telemetry.send(eventStr, "sendTelemetry")
 	}
 }))()
+	

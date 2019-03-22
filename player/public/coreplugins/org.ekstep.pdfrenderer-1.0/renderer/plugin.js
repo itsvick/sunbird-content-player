@@ -38,9 +38,11 @@ org.ekstep.contentrenderer.baseLauncher.extend({
         this.initContentProgress();
         var path = undefined;
         var globalConfigObj = EkstepRendererAPI.getGlobalConfig();
-        if (isMobile) {
+
+        if (!isbrowserpreview) {
             var regex = new RegExp("^(http|https)://", "i");
             if(!regex.test(globalConfigObj.basepath)){
+                console.log("in pldf plugin");
                 var prefix_url = globalConfigObj.basepath || '';
                 path = prefix_url + "/" + data.artifactUrl + "?" + new Date().getSeconds();
             }else   

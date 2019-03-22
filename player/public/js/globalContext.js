@@ -47,6 +47,9 @@ GlobalContext = {
 							identifier: "org.ekstep.contentplayer"
 						}
 					}
+					console.log('___setGlobalConfig');
+					console.log('AppConfig', AppConfig);
+					console.log('configuration', GlobalContext.config);
 					window.globalConfig = mergeJSON(AppConfig, GlobalContext.config)
 					GlobalContext.config = window.globalConfig
 					setTelemetryEventFields(window.globalConfig)
@@ -55,20 +58,25 @@ GlobalContext = {
 			}
 		}).then(function (config) {
 			if (config.origin === "Genie") {
+				console.log("In GlobalContext", org.ekstep.service.renderer);
+				
 				return org.ekstep.service.renderer.getCurrentUser()
 			} else {
 				showToaster("error", "Invalid Origin " + config.origin)
 				reject("INVALID_ORIGIN")
 			}
 		}).then(function (result) {
+			console.log('getCurrentUser result');
 			if (result.uid) {
 				GlobalContext.user = result
 				GlobalContext._params.user = GlobalContext.user
 				resolve(true)
 			} else {
+				console.log('getCurrentUser catch');
 				reject("INVALID_USER")
 			}
 		}).catch(function (err) {
+			console.log('getCurrentUse err catch');
 			reject(err)
 		})
 	},
