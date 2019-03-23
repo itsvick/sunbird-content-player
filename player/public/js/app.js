@@ -48,26 +48,12 @@ var app = angular.module("genie-canvas", ["ionic", "ngCordova", "oc.lazyLoad"])
 			})
 		}
 		// isMobile = !!window.cordova
-		org.ekstep.service.init()
-		GlobalContext.init(packageName, version).then(function (appInfo) {
-			console.log('GlobalContext.init then', isbrowserpreview);
-			if (typeof localPreview !== "undefined" && localPreview === "local") { return }
-			if (!isbrowserpreview) {
-				org.ekstep.contentrenderer.device()
-			}
-		}).catch(function (res) {
-			console.log("Error Globalcontext.init:", res)
-			EkstepRendererAPI.logErrorEvent(res, {
-				"type": "system",
-				"severity": "fatal",
-				"action": "play"
-			})
-			alert(res.errors)
-			exitApp()
-		})
+		
+		
 		$timeout(function () {
 			$ionicPlatform.ready(function () {				
-				splashScreen.addEvents()				
+				splashScreen.addEvents()
+				org.ekstep.service.init()				
 				// genieService = window.parent.genieService;
 				if (typeof Promise === "undefined") {
 					alert("Your device isn’t compatible with this version of Genie.")
@@ -83,7 +69,24 @@ var app = angular.module("genie-canvas", ["ionic", "ngCordova", "oc.lazyLoad"])
 				} else {
 					globalConfig.recorder = "android"
 				}
-				window.StatusBar && StatusBar.styleDefault()				
+				window.StatusBar && StatusBar.styleDefault()
+				GlobalContext.init(packageName, version).then(function (appInfo) {
+					console.log('GlobalContext.init then', isbrowserpreview);
+					if (typeof localPreview !== "undefined" && localPreview === "local") { return }
+					if (!isbrowserpreview) {
+						org.ekstep.contentrenderer.device()
+					}
+				}).catch(function (res) {
+					console.log("Error Globalcontext.init:", res)
+					EkstepRendererAPI.logErrorEvent(res, {
+						"type": "system",
+						"severity": "fatal",
+						"action": "play"
+					})
+					alert(res.errors)
+					exitApp()
+				})
+
 			})
 		})
 	}).config(function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvider, $sceDelegateProvider) {
